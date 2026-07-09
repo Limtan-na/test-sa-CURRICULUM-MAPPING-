@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}{{ app_name }}{% endblock %}</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+  {% block head %}{% endblock %}
+</head>
+<body>
+  <div class="app-layout">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <h2>CQI Monitor</h2>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="/dashboard" class="nav-item {% if active_page == 'dashboard' %}active{% endif %}">Dashboard</a>
+        <a href="/curriculum" class="nav-item {% if active_page == 'curriculum' %}active{% endif %}">Curriculum</a>
+        <a href="/outcomes" class="nav-item {% if active_page == 'outcomes' %}active{% endif %}">Outcomes</a>
+        <a href="/mapping" class="nav-item {% if active_page == 'mapping' %}active{% endif %}">Curriculum Mapping</a>
+        <a href="/reports" class="nav-item {% if active_page == 'reports' %}active{% endif %}">Reports</a>
+        {% if session.get('role') in ('admin', 'manager') %}
+          <a href="/admin" class="nav-item {% if active_page == 'admin' %}active{% endif %}">Admin Panel</a>
+        {% endif %}
+      </nav>
+      <div class="sidebar-footer">
+        {% set role = session.get('role', 'faculty') %}
+        <span class="user-badge role-{{ role }}">{{ role | replace('_', ' ') | title }}</span>
+        <span class="user-name">{{ session.get('full_name', '') }}</span>
+        <a href="/auth/logout" class="btn-logout">Logout</a>
+      </div>
+    </aside>
+    <main class="main-content">
+      {% block content %}{% endblock %}
+    </main>
+  </div>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

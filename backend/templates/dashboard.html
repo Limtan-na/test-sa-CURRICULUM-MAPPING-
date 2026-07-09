@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}Dashboard - {{ app_name }}{% endblock %}
+{% block head %}
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+{% endblock %}
+{% set active_page = 'dashboard' %}
+{% block content %}
+  <header class="content-header">
+    <h1>Dashboard</h1>
+    <p>Welcome back, {{ session.get('full_name', '') }}</p>
+  </header>
+
+  <div class="stats-grid">
+    <div class="stat-card">
+      <h3>Programs</h3>
+      <p class="stat-value" id="stat-programs">--</p>
+    </div>
+    <div class="stat-card">
+      <h3>Courses</h3>
+      <p class="stat-value" id="stat-courses">--</p>
+    </div>
+    <div class="stat-card">
+      <h3>Outcomes</h3>
+      <p class="stat-value" id="stat-outcomes">--</p>
+    </div>
+    <div class="stat-card">
+      <h3>Mappings</h3>
+      <p class="stat-value" id="stat-mappings">--</p>
+    </div>
+  </div>
+
+  <div class="chart-row">
+    <div class="chart-card">
+      <h3>Outcomes Coverage</h3>
+      <div id="chart-coverage"></div>
+    </div>
+    <div class="chart-card">
+      <h3>Mapping Status</h3>
+      <div id="chart-mapping"></div>
+    </div>
+  </div>
+{% endblock %}
+{% block scripts %}
+  <script src="/static/js/app.js"></script>
+{% endblock %}

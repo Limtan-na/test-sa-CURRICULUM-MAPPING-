@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %}Admin Panel - {{ app_name }}{% endblock %}
+{% set active_page = 'admin' %}
+{% block content %}
+  <header class="content-header">
+    <h1>Admin Panel</h1>
+    <p>User management and system configuration</p>
+  </header>
+
+  <div class="card">
+    <h2>User Management</h2>
+    <p>Manage system users, roles, and permissions.</p>
+    <table style="width:100%; border-collapse: collapse;">
+      <thead>
+        <tr style="text-align:left; border-bottom: 2px solid #ddd;">
+          <th style="padding: 10px 5px;">Username</th>
+          <th style="padding: 10px 5px;">Name</th>
+          <th style="padding: 10px 5px;">Email</th>
+          <th style="padding: 10px 5px;">Role</th>
+          <th style="padding: 10px 5px;">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for user in users %}
+        <tr style="border-bottom: 1px solid #eee;">
+          <td style="padding: 10px 5px;">{{ user.username }}</td>
+          <td style="padding: 10px 5px;">{{ user.full_name() }}</td>
+          <td style="padding: 10px 5px;">{{ user.email }}</td>
+          <td style="padding: 10px 5px;">
+            <span class="user-badge role-{{ user.role }}">{{ user.role | title }}</span>
+          </td>
+          <td style="padding: 10px 5px;">
+            {% if user.is_active %}
+              <span style="color:#38a169;">Active</span>
+            {% else %}
+              <span style="color:#e53e3e;">Inactive</span>
+            {% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h2>System Configuration</h2>
+    <p>Configure program settings and CQI parameters.</p>
+    <em>System configuration to be implemented in next phase.</em>
+  </div>
+{% endblock %}

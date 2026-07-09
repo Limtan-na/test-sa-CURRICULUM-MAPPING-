@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - {{ app_name }}</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body class="login-page">
+  <div class="login-container">
+    <div class="login-card">
+      <div class="login-header">
+        <h1>{{ app_name }}</h1>
+        <p>Curriculum Mapping & Outcomes Alignment</p>
+      </div>
+
+      {% if error %}
+        <div class="alert alert-error">{{ error }}</div>
+      {% endif %}
+
+      <form action="/auth/login" method="POST" class="login-form">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" placeholder="Enter your username" required autofocus>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" placeholder="Enter your password" required>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+      </form>
+
+      <div class="login-footer">
+        <p>Northern Bukidnon State College — ICS Department</p>
+      </div>
+    </div>
+
+    <div class="test-accounts">
+      <p><strong>Test Accounts</strong></p>
+      <table>
+        <tr><th>Username</th><th>Password</th><th>Role</th></tr>
+        <tr><td>admin</td><td>password</td><td>ADMIN</td></tr>
+        <tr><td>manager</td><td>password</td><td>MANAGER</td></tr>
+        <tr><td>user1</td><td>password</td><td>USER</td></tr>
+      </table>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Curriculum Mapping - {{ app_name }}{% endblock %}
+{% block head %}
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+{% endblock %}
+{% set active_page = 'mapping' %}
+{% block content %}
+  <header class="content-header">
+    <h1>Curriculum Mapping</h1>
+    <p>Map courses to program outcomes with coverage levels (I/E/D).</p>
+  </header>
+
+  <div class="card">
+    <h2>Course-Outcome Matrix</h2>
+    <p style="margin-bottom:15px;color:#666;">Each cell shows the coverage level of a Program Outcome in a course: <strong>I</strong> = Introduced, <strong>E</strong> = Enabling, <strong>D</strong> = Demonstrative.</p>
+    <div id="mapping-matrix"></div>
+  </div>
+{% endblock %}
+{% block scripts %}
+  <script src="/static/js/app.js"></script>
+{% endblock %}

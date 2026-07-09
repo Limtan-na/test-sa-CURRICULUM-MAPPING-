@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}Curriculum - {{ app_name }}{% endblock %}
+{% set active_page = 'curriculum' %}
+{% block content %}
+  <header class="content-header">
+    <h1>Curriculum Management</h1>
+    <p>Bachelor of Science in Information Technology — Program of Study</p>
+  </header>
+
+  <div class="card">
+    <h2>Program</h2>
+    <p><strong>BSIT</strong> — Bachelor of Science in Information Technology</p>
+    <p style="color:#666;margin-top:5px;">A four-year program focused on IT fundamentals, programming, networking, and database management.</p>
+  </div>
+
+  {% set years = {1: 'First Year', 2: 'Second Year', 3: 'Third Year', 4: 'Fourth Year'} %}
+  {% set semesters = {1: '1st Semester', 2: '2nd Semester'} %}
+
+  {% for year_num in [1,2,3,4] %}
+  <div class="card">
+    <h2>{{ years[year_num] }}</h2>
+    {% for sem_num in [1,2] %}
+      {% set sem_courses = courses | selectattr('year_level', 'equalto', year_num) | selectattr('semester', 'equalto', sem_num) | list %}
+      {% if sem_courses %}
+      <h3 style="margin:15px 0 10px;font-size:0.95rem;color:#2d6a9f;">{{ semesters[sem_num] }}</h3>
+      <table style="width:100%;border-collapse:collapse;">
+        <thead>
+          <tr style="text-align:left;border-bottom:2px solid #ddd;">
+            <th style="padding:8px 5px;width:80px;">Code</th>
+            <th style="padding:8px 5px;">Course</th>
+            <th style="padding:8px 5px;width:70px;">Credits</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for course in sem_courses %}
+          <tr style="border-bottom:1px solid #eee;">
+            <td style="padding:8px 5px;font-weight:600;">{{ course.code }}</td>
+            <td style="padding:8px 5px;">{{ course.name }}</td>
+            <td style="padding:8px 5px;">{{ course.credits }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% endif %}
+    {% endfor %}
+  </div>
+  {% endfor %}
+{% endblock %}

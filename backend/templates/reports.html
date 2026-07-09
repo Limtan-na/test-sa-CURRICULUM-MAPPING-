@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Reports - {{ app_name }}{% endblock %}
+{% block head %}
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+{% endblock %}
+{% set active_page = 'reports' %}
+{% block content %}
+  <header class="content-header">
+    <h1>Reports</h1>
+    <p>Generate alignment matrices, gap analysis, and accreditation-ready reports.</p>
+  </header>
+
+  <div class="card">
+    <h2>Report Generation</h2>
+    <p>Accreditation-ready reports and outcome attainment matrices — to be implemented.</p>
+    <em>Coming in the next phase.</em>
+  </div>
+{% endblock %}
+{% block scripts %}
+  <script src="/static/js/app.js"></script>
+{% endblock %}
