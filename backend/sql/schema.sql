@@ -79,6 +79,7 @@ INSERT INTO programs (code, name, description) VALUES
 INSERT INTO courses (program_id, code, name, credits, year_level, semester, description) VALUES
   (1, 'IT 10', 'Introduction to Computing', 3, 1, 1, 'Fundamentals of computing, history, and basic concepts.'),
   (1, 'IT 11', 'Fundamentals of Programming 1', 3, 1, 1, 'Structured programming using a modern language.'),
+  (1, 'MATH 21', 'Discrete Mathematics', 3, 1, 1, 'Mathematical structures for computing and logic.'),
   (1, 'IT 12', 'Human Computer Interaction', 3, 1, 2, 'Principles of user interface design and usability.'),
   (1, 'IT 13', 'Fundamentals of Programming 2', 3, 1, 2, 'Object-oriented programming concepts and design.'),
   (1, 'IT 14', 'Quantitative Methods', 3, 1, 2, 'Statistical and mathematical methods for IT.'),
@@ -94,17 +95,21 @@ INSERT INTO courses (program_id, code, name, credits, year_level, semester, desc
   (1, 'IT 27', 'Information Management', 3, 2, 2, 'Data management, administration, and security.'),
   (1, 'IT 28', 'E-Commerce', 3, 2, 2, 'E-business models, online transactions, and security.'),
   (1, 'IT 29', 'Advance Networking', 3, 2, 2, 'Routing, switching, and network infrastructure.'),
+  (1, 'CCS 6', 'Indigenous Creative Crafts', 3, 2, 2, 'Indigenous materials and creative craft production.'),
 
   (1, 'IT 30', 'Advance Database System', 3, 3, 1, 'Distributed databases, NoSQL, and advanced queries.'),
   (1, 'IT 31', 'Professional Ethics', 3, 3, 1, 'Legal, ethical, and professional issues in IT.'),
   (1, 'IT 32', 'System Integration & Architecture 1', 3, 3, 1, 'Enterprise architecture and system integration.'),
   (1, 'IT 33', 'Data Mining', 3, 3, 1, 'Data mining algorithms, patterns, and analytics.'),
   (1, 'IT 34', 'Information Assurance & Security 1', 3, 3, 1, 'Security principles, cryptography, and risk management.'),
+  (1, 'CCS 5', 'Living in the IT Era', 3, 3, 1, 'IT impacts on society, ethics, and digital citizenship.'),
   (1, 'IT 35', 'Application Dev. & Emerging Technologies', 3, 3, 2, 'Mobile, cloud, and emerging platform development.'),
   (1, 'IT 36', 'Information Assurance & Security 2', 3, 3, 2, 'Advanced security, forensics, and compliance.'),
   (1, 'IT 37', 'Hardware Implementation Technologies', 3, 3, 2, 'Hardware architecture, IoT, and embedded systems.'),
   (1, 'IT 38', 'Enterprise Systems', 3, 3, 2, 'ERP, CRM, and enterprise application integration.'),
   (1, 'IT 39', 'System Integration & Architecture 2', 3, 3, 2, 'Advanced integration, APIs, and microservices.'),
+  (1, 'MATH 31N', 'Probability and Statistics for IT Research', 3, 3, 3, 'Statistical methods and probability for IT research.'),
+  (1, 'IT 40', 'Capstone Project 1', 3, 3, 3, 'Project proposal, research methodology, and system design.'),
 
   (1, 'IT 41', 'Capstone Project 2', 3, 4, 1, 'Project implementation, testing, and defense.'),
   (1, 'IT 42', 'Trends in Computer Technology & Field Trip', 3, 4, 1, 'Emerging technologies and industry exposure.'),
@@ -121,18 +126,20 @@ INSERT INTO outcomes (type, code, description, program_id) VALUES
 
 INSERT INTO mappings (course_id, outcome_id, coverage_level) VALUES
   -- Y1S1
-  (1, 1, 'I'), (1, 3, 'I'), (2, 1, 'I'), (2, 2, 'I'),
+  (1, 1, 'I'), (1, 3, 'I'), (2, 1, 'I'), (2, 2, 'I'), (3, 1, 'I'),
   -- Y1S2
-  (3, 4, 'I'), (4, 2, 'E'), (4, 3, 'I'), (5, 1, 'E'), (6, 1, 'I'), (6, 6, 'I'),
+  (4, 4, 'I'), (5, 2, 'E'), (5, 3, 'I'), (6, 1, 'E'), (7, 1, 'I'), (7, 6, 'I'),
   -- Y2S1
-  (7, 1, 'E'), (8, 2, 'E'), (9, 6, 'I'), (10, 2, 'I'), (10, 4, 'I'), (11, 2, 'E'), (12, 3, 'I'), (12, 6, 'I'),
+  (8, 1, 'E'), (9, 2, 'E'), (10, 6, 'I'), (11, 2, 'I'), (11, 4, 'I'), (12, 2, 'E'), (13, 3, 'I'), (13, 6, 'I'),
   -- Y2S2
-  (13, 1, 'E'), (14, 1, 'E'), (15, 5, 'I'), (15, 6, 'I'), (16, 6, 'E'),
+  (14, 1, 'E'), (15, 1, 'E'), (16, 5, 'I'), (16, 6, 'I'), (17, 6, 'E'), (18, 3, 'I'), (18, 6, 'I'),
   -- Y3S1
-  (17, 1, 'D'), (18, 5, 'E'), (19, 2, 'D'), (19, 4, 'E'), (20, 1, 'D'), (21, 5, 'E'), (21, 6, 'E'),
+  (19, 1, 'D'), (20, 5, 'E'), (21, 2, 'D'), (21, 4, 'E'), (22, 1, 'D'), (23, 5, 'E'), (23, 6, 'E'), (24, 5, 'I'), (24, 6, 'I'),
   -- Y3S2
-  (22, 2, 'D'), (22, 6, 'E'), (23, 5, 'D'), (24, 6, 'I'), (25, 2, 'D'), (25, 4, 'D'),
+  (25, 2, 'D'), (25, 6, 'E'), (26, 5, 'D'), (27, 6, 'I'), (28, 2, 'D'), (28, 4, 'D'),
+  -- Y3 Summer
+  (30, 1, 'E'), (31, 1, 'D'), (31, 4, 'E'),
   -- Y4S1
-  (26, 2, 'D'), (26, 4, 'D'), (27, 6, 'D'), (28, 3, 'D'), (28, 4, 'E'),
+  (32, 2, 'D'), (32, 4, 'D'), (33, 6, 'D'), (34, 3, 'D'), (34, 4, 'E'),
   -- Y4S2
-  (29, 3, 'D'), (29, 5, 'D'), (29, 6, 'D');
+  (35, 3, 'D'), (35, 5, 'D'), (35, 6, 'D');
